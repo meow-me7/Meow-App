@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="auth-container">
+                <h1>Welcome to ChatApp</h1>
+                <form class="auth-form" id="login-form">
+                    <input type="email" placeholder="Email" id="login-email" required>
+                    <input type="password" placeholder="Password" id="login-password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <span id="go-to-register">Register</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Screen -->
+        <div id="register-screen" class="screen">
+            <div class="auth-container">
+                <h1>Create Account</h1>
+                <form class="auth-form" id="register-form">
+                    <input type="text" placeholder="Name" id="register-name" required>
+                    <input type="email" placeholder="Email" id="register-email" required>
+                    <input type="password" placeholder="Password" id="register-password" required>
+                    <button type="submit">Register</button>
+                </form>
+                <div class="auth-switch">
+                    Already have an account? <span id="go-to-login">Login</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chats Screen -->
+        <div id="chats-screen" class="screen">
+            <div class="header">
+                <h2>Chats</h2>
+                <div class="header-icons">
+                    <i class="fas fa-search" id="search-users"></i>
+                   <!-- <i class="fas fa-plus" id="new-chat"></i>-->
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search...">
+            </div>
+            <div class="chats-list" id="chats-list"></div>
+            <div class="navigation">
+                <div class="nav-item active" data-screen="chats">
+                    <i class="fas fa-comment"></i>
+                    <span>Chats</span>
+                </div>
+                <div class="nav-item" data-screen="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item" data-screen="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="header">
+                <div class="chat-header">
+                    <i class="fas fa-arrow-left back-button" id="back-to-chats"></i>
+                    <img src="" alt="Avatar" class="chat-avatar" id="current-chat-avatar">
+                    <div class="chat-info">
+                        <div class="chat-name" id="chat-name">User Name</div>
+                    </div>
+                </div>
+                <div class="header-icons">
+                    <i class="fas fa-phone disabled-icon"></i>
+                    <i class="fas fa-video disabled-icon"></i>
+                </div>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input-container">
+                <textarea class="chat-input" id="message-input" placeholder="Type a message..." rows="1"></textarea>
+                <button class="send-button" id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings-screen" class="screen">
+            <div class="header">
+                <h2>Settings</h2>
+            </div>
+            <div class="settings-container">
+                <div class="settings-item">
+                    <div class="settings-title">Dark Mode</div>
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-item">
+                    <div class="settings-title">Logout</div>
+                    <i class="fas fa-sign-out-alt" id="logout-button"></i>
+                </div>
+            </div>
+            <div class="navigation">
+                <div class="nav-item" data-screen="chats">
+                    <i class="fas fa-comment"></i>
+                    <span>Chats</span>
+                </div>
+                <div class="nav-item active" data-screen="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item" data-screen="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Screen -->
+        <div id="profile-screen" class="screen">
+            <div class="header">
+                <h2>Profile</h2>
+            </div>
+            <div class="profile-container">
+                <div class="avatar-upload-container">
+                    <img src="" alt="Profile" class="profile-avatar" id="profile-avatar">
+                    <div class="edit-avatar">
+                        <i class="fas fa-camera"></i>
+                    <input type="hidden" id="avatar-upload" accept="image/*">
+                    </div>
+                </div>
+                <form class="profile-form">
+                    <input type="text" placeholder="Name" id="profile-name" required>
+                    <input type="email" placeholder="Email" id="profile-email" required>
+                    <input type="tel" placeholder="Phone" id="profile-phone">
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+            <div class="navigation">
+                <div class="nav-item" data-screen="chats">
+                    <i class="fas fa-comment"></i>
+                    <span>Chats</span>
+                </div>
+                <div class="nav-item" data-screen="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item active" data-screen="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading indicator -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
